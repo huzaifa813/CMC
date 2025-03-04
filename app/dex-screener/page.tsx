@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface TokenLink {
@@ -33,7 +34,6 @@ export default function DexScreenerTokenData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch both token profiles and token boosts
         const [profilesRes, boostsRes] = await Promise.all([
           fetch("https://api.dexscreener.com/token-profiles/latest/v1"),
           fetch("https://api.dexscreener.com/token-boosts/latest/v1"),
@@ -48,13 +48,10 @@ export default function DexScreenerTokenData() {
           boostsRes.json(),
         ]);
 
-        // Ensure data is an array
         setTokens(Array.isArray(profilesData) ? profilesData : []);
         setBoosts(Array.isArray(boostsData) ? boostsData : []);
-
-        
-    } catch (err) {
-        console.log(err)
+      } catch (err) {
+        console.log(err);
         setError("Error fetching data");
       } finally {
         setLoading(false);
@@ -75,7 +72,6 @@ export default function DexScreenerTokenData() {
         DexScreener Token Data
       </h1>
 
-      {/* Token Profiles Section */}
       <h2 className="text-2xl font-semibold mb-4 text-center">
         Token Profiles
       </h2>
@@ -91,7 +87,6 @@ export default function DexScreenerTokenData() {
         )}
       </div>
 
-      {/* Token Boosts Section */}
       <h2 className="text-2xl font-semibold mt-12 mb-4 text-center">
         Token Boosts
       </h2>
@@ -114,7 +109,6 @@ export default function DexScreenerTokenData() {
   );
 }
 
-// Token Card Component
 function TokenCard({
   token,
   isBoost = false,
@@ -124,16 +118,20 @@ function TokenCard({
 }) {
   return (
     <div className="bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300">
-      <img
+      <Image
         src={token.header || "/placeholder.png"}
         alt={token.description}
         className="w-full h-36 object-cover rounded-lg mb-4"
+        width={500}
+        height={36}
       />
       <div className="flex items-center space-x-4">
-        <img
+        <Image
           src={token.icon || "/placeholder-icon.png"}
           alt="Token Icon"
           className="w-14 h-14 rounded-full border-2 border-gray-600"
+          width={500}
+          height={36}
         />
         <div>
           <h2 className="text-xl font-semibold overflow-hidden text-ellipsis break-words line-clamp-4">
