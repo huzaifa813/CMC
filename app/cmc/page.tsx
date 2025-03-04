@@ -37,7 +37,6 @@ export default function DexListings() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6 flex flex-col items-center">
-      {/* Animated Heading */}
       <motion.h1
         className="text-3xl font-bold mb-6 text-center"
         initial={{ opacity: 0, y: -20 }}
@@ -47,7 +46,6 @@ export default function DexListings() {
         🚀 DEX Listings from CoinMarketCap
       </motion.h1>
 
-      {/* Loading State */}
       {loading && (
         <motion.p
           className="text-lg text-gray-400 animate-pulse"
@@ -63,10 +61,8 @@ export default function DexListings() {
         </motion.p>
       )}
 
-      {/* Error State */}
       {error && <p className="text-red-500">{error}</p>}
 
-      {/* Table */}
       {!loading && !error && (
         <motion.div
           className="w-full max-w-6xl overflow-x-auto"
