@@ -5,7 +5,9 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-900 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">Navbar</h1>
+        <Link href="/" className="text-xl font-bold">
+          DEX API HUB
+        </Link>
         <div className="flex space-x-4">
           <Link href="/cmc" className="hover:text-gray-400 transition">
             CoinMarketCap
