@@ -27,6 +27,8 @@ export default function TradingViewPage() {
             { proName: "BINANCE:MATICUSDT", title: "Polygon" },
             { proName: "BINANCE:DOTUSDT", title: "Polkadot" },
             { proName: "BINANCE:AVAXUSDT", title: "Avalanche" },
+            // { proName: "BINANCE:AVAXUSDT", title: "Avalanche" },
+            // { proName: "BINANCE:AVAXUSDT", title: "Avalanche" },
           ],
 
           showSymbolLogo: true,
@@ -52,10 +54,10 @@ export default function TradingViewPage() {
           showSymbolLogo: true,
           width: "100%",
           height: "700",
-          defaultColumn:"overview",
-          screener_type:"crypto_mkt",
-          displayCurrency:'USD',
-          locale:"en",
+          defaultColumn: "overview",
+          screener_type: "crypto_mkt",
+          displayCurrency: "USD",
+          locale: "en",
         },
       },
 
