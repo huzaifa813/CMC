@@ -27,8 +27,6 @@ export default function TradingViewPage() {
             { proName: "BINANCE:MATICUSDT", title: "Polygon" },
             { proName: "BINANCE:DOTUSDT", title: "Polkadot" },
             { proName: "BINANCE:AVAXUSDT", title: "Avalanche" },
-            // { proName: "BINANCE:AVAXUSDT", title: "Avalanche" },
-            // { proName: "BINANCE:AVAXUSDT", title: "Avalanche" },
           ],
 
           showSymbolLogo: true,
