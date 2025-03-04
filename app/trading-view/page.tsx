@@ -112,29 +112,17 @@ export default function TradingViewPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-white px-6 py-12">
-      {/* Ticker Widget */}
       <div ref={tickerRef} className="w-full p-2 rounded-lg shadow-lg" />
-
-      {/* Chart Widget */}
       <div ref={chartRef} className="w-full p-4 rounded-lg shadow-lg mb-10" />
-
-      {/* Profile Section */}
       <div ref={profileRef} className="w-full p-4 rounded-lg shadow-lg mb-10" />
-
-      {/* Financials Section */}
       <div
         ref={financialsRef}
         className="w-full p-4 rounded-lg shadow-lg mb-10"
       />
-
-      {/* Row Layout for Analysis & Timeline */}
       <div className="flex flex-row gap-6">
-        {/* Technical Analysis Section */}
         <div className="w-1/2 p-4 rounded-lg shadow-lg bg-gray-800">
           <div ref={analysisRef} className="w-full" />
         </div>
-
-        {/* Timeline Widget Section */}
         <div className="w-1/2 p-4 rounded-lg shadow-lg bg-gray-800">
           <div ref={timelineRef} className="w-full" />
         </div>
