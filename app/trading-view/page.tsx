@@ -31,6 +31,7 @@ export default function TradingViewPage() {
 
           showSymbolLogo: true,
           colorTheme: "dark",
+          // colorTheme: "dark",
         },
       },
       {
