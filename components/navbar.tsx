@@ -15,6 +15,9 @@ export default function Navbar() {
           <Link href="/trading-view" className="hover:text-gray-400 transition">
             TradingView
           </Link>
+          <Link href="/trading-forex" className="hover:text-gray-400 transition">
+            ForexView
+          </Link>
         </div>
       </div>
     </nav>
