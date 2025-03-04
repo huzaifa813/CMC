@@ -1,75 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 
-export default function DexListings() {
-  interface Dex {
-    id: string;
-    name: string;
-    num_market_pairs: number;
-    market_share: number;
-    quote: {
-      volume_24h: number;
-      num_transactions_24h?: number;
-    }[];
-  }
-
-  const [dexes, setDexes] = useState<Dex[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchDexes() {
-      try {
-        const res = await fetch("/api/dex-listings");
-        const data = await res.json();
-        setDexes(data.data || []);
-      } catch (err: unknown) {
-        setError("Failed to fetch DEX listings.");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchDexes();
-  }, []);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
+export default function Main() {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">
-        DEX Listings from CoinMarketCap
-      </h1>
-      <table className="w-full border-collapse border border-gray-800">
-        <thead>
-          <tr className="bg-gray-700">
-            <th className="border p-2">Name</th>
-            <th className="border p-2">Market Pairs</th>
-            <th className="border p-2">Market Share</th>
-            <th className="border p-2">24h Volume</th>
-            <th className="border p-2">Transactions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {dexes.map((dex) => (
-            <tr key={dex.id} className="border">
-              <td className="border p-2">{dex.name}</td>
-              <td className="border p-2">{dex.num_market_pairs}</td>
-              <td className="border p-2">
-                {(dex.market_share * 100).toFixed(2)}%
-              </td>
-              <td className="border p-2">
-                ${dex.quote[0]?.volume_24h.toLocaleString()}
-              </td>
-              <td className="border p-2">
-                {dex.quote[0]?.num_transactions_24h?.toLocaleString() || "N/A"}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white px-6">
+      <motion.h1
+        className="text-5xl font-bold mb-4 text-center"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        🚀 Crypto DEX API Testing
+      </motion.h1>
+      <motion.p
+        className="text-lg text-gray-400 text-center max-w-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+      >
+        Explore decentralized exchange data in real time. Test liquidity,
+        trading pairs, market shares, and more with the latest APIs.
+      </motion.p>
     </div>
   );
 }
