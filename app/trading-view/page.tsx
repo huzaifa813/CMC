@@ -7,6 +7,8 @@ export default function TradingViewPage() {
   const chartRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const financialsRef = useRef<HTMLDivElement>(null);
+  const analysisRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const widgetConfigs = [
@@ -37,6 +39,7 @@ export default function TradingViewPage() {
         src: "symbol-profile",
         config: {
           width: "100%",
+          height: "300",
           isTransparent: false,
           colorTheme: "dark",
           symbol: "NASDAQ:AAPL",
@@ -51,14 +54,41 @@ export default function TradingViewPage() {
           colorTheme: "dark",
           isTransparent: false,
           width: "100%",
-          height: "600",
+          height: "800",
+        },
+      },
+      {
+        ref: analysisRef,
+        src: "technical-analysis",
+        config: {
+          interval: "1m",
+          width: "100%",
+          height: "450",
+          symbol: "NASDAQ:AAPL",
+          showIntervalTabs: true,
+          displayMode: "single",
+          locale: "en",
+          colorTheme: "dark",
+        },
+      },
+      {
+        ref: timelineRef,
+        src: "timeline",
+        config: {
+          feedMode: "all_symbols",
+          isTransparent: false,
+          displayMode: "regular",
+          width: "100%",
+          height: "450",
+          colorTheme: "dark",
+          locale: "en",
         },
       },
     ];
 
     widgetConfigs.forEach(({ ref, src, config }) => {
       if (!ref.current) return;
-      ref.current.innerHTML = ""; // Clear any previous widgets
+      ref.current.innerHTML = "";
       const script = document.createElement("script");
       script.src = `https://s3.tradingview.com/external-embedding/embed-widget-${src}.js`;
       script.async = true;
@@ -68,20 +98,34 @@ export default function TradingViewPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-white px-6 py-12 overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white px-6 py-12">
       {/* Ticker Widget */}
-      <div ref={tickerRef} className="w-full mb-6 bg-gray-800 p-2 rounded-lg shadow-lg" />
+      <div ref={tickerRef} className="w-full p-2 rounded-lg shadow-lg" />
 
       {/* Chart Widget */}
-      <div ref={chartRef} className="w-full bg-gray-800 p-4 rounded-lg shadow-lg mb-10" />
+      <div ref={chartRef} className="w-full p-4 rounded-lg shadow-lg mb-10" />
 
       {/* Profile Section */}
-      <h2 className="text-xl font-bold text-blue-400 mb-4">AAPL Profile</h2>
-      <div ref={profileRef} className="w-full h-[500px] bg-gray-800 p-4 rounded-lg shadow-lg mb-10" />
+      <div ref={profileRef} className="w-full p-4 rounded-lg shadow-lg mb-10" />
 
       {/* Financials Section */}
-      <h2 className="text-xl font-bold text-blue-400 mb-4">AAPL Financials</h2>
-      <div ref={financialsRef} className="w-full bg-gray-800 p-4 rounded-lg shadow-lg" />
+      <div
+        ref={financialsRef}
+        className="w-full p-4 rounded-lg shadow-lg mb-10"
+      />
+
+      {/* Row Layout for Analysis & Timeline */}
+      <div className="flex flex-row gap-6">
+        {/* Technical Analysis Section */}
+        <div className="w-1/2 p-4 rounded-lg shadow-lg bg-gray-800">
+          <div ref={analysisRef} className="w-full" />
+        </div>
+
+        {/* Timeline Widget Section */}
+        <div className="w-1/2 p-4 rounded-lg shadow-lg bg-gray-800">
+          <div ref={timelineRef} className="w-full" />
+        </div>
+      </div>
     </div>
   );
 }
