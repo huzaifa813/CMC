@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface TokenLink {
@@ -118,7 +117,7 @@ function TokenCard({
 }) {
   return (
     <div className="bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300">
-      <Image
+      <img
         src={token.header || "/placeholder.png"}
         alt={token.description}
         className="w-full h-36 object-cover rounded-lg mb-4"
@@ -126,7 +125,7 @@ function TokenCard({
         height={36}
       />
       <div className="flex items-center space-x-4">
-        <Image
+        <img
           src={token.icon || "/placeholder-icon.png"}
           alt="Token Icon"
           className="w-14 h-14 rounded-full border-2 border-gray-600"
