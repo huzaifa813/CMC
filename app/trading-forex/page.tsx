@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export default function TradingViewPage() {
+export default function ForexTradingViewPage() {
   const tickerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<HTMLDivElement>(null);
   const forexScreenerRef = useRef<HTMLDivElement>(null);
