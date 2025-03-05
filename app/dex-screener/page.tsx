@@ -44,7 +44,7 @@ export default function DexScreenerTokenData() {
         setBoosts(Array.isArray(boostsData) ? boostsData : []);
         setTopBoosts(Array.isArray(topBoostsData) ? topBoostsData : []);
       } catch (err) {
-        console.error(err);
+        console.log(err);
         setError("Error fetching data");
       } finally {
         setLoading(false);
